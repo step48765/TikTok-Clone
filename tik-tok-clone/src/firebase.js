@@ -1,4 +1,6 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import firebase from "firebase";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCEXEF9QRatz3aG2cvN0hQPPodg5VVlC6A",
   authDomain: "tik-tok-clone-64397.firebaseapp.com",
@@ -9,3 +11,7 @@ const firebaseConfig = {
   appId: "1:576832350677:web:f28a5303af3c466deeb55c",
   measurementId: "G-T4F3H4CBXN"
 };
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const db = firebaseApp.firestore()
+export default db;

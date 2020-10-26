@@ -1,11 +1,19 @@
-import React, { useRef } from "react"
-import './Video.css'
+import React, { useRef, useState } from "react";
+import VideoFooter from './VideoFooter';
+import './Video.css';
 
 function Video() {
+  const [playing, setplay] = useState(false); // this is saying by default the video is not playing
   const videoRef = useRef(null);
 
   const onVideoPress = () => {
-    videoRef.current.play();
+    if (playing){
+      videoRef.current.pause();
+      setplay(false);
+    }else{
+      videoRef.current.play();
+      setplay(true);
+    }
   };
 
   return (
@@ -15,7 +23,9 @@ function Video() {
       loop
       onClick={onVideoPress}
       ref={videoRef}
-      src="https://v16-web.tiktok.com/video/tos/useast2a/tos-useast2a-ve-0068c004/0d3438d076ca4df38cb15980793839d2/?a=1988&br=5026&bt=2513&cr=0&cs=0&cv=1&dr=0&ds=3&er=&expire=1603714437&l=2020102606134301018907203422033344&lr=tiktok_m&mime_type=video_mp4&policy=2&qs=0&rc=M3Rzbm1neGx5djMzNDczM0ApZWdpOjk4Z2VnNzs1OTwzO2dpamhqLi9pbmRfLS1gMTZzczIxYS8xLTUzYzMyLmI0NF86Yw%3D%3D&signature=e63f3fa46ca81d17ee9c81cdd553c67e&tk=tt_webid_v2&vl=&vr="></video>
+      src="https://v16m-default.akamaized.net/41a814ec4754ae120e3e77dd7f81bc13/5f974f75/video/tos/useast2a/tos-useast2a-ve-0068c001/47c916449ae14dfaa7a4e85ece5c5917/?a=0&br=2536&bt=1268&cr=0&cs=0&cv=1&dr=0&ds=6&er=&l=202010261635500101890722165E049CD0&lr=all&mime_type=video_mp4&qs=0&rc=ajlpZnB0Z3hmeDMzaTczM0ApZmQ7Mzw0ZTszNzxoZmZpNGcub2NrZHNtc19fLS0zMTZzc2ItNS8zMTMyMzEzLl80LmE6Yw%3D%3D&vl=&vr=">
+      </video>
+      <VideoFooter />
     </div>
   );
 }
